@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Montserrat:wght@700&family=Poppins:wght@700&display=swap');
+
+
+.login{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+.login__img{
+    background-color: #F3F4F8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__img--img{
+    height: 45%;
+}
+
+.login__formFrame{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__formFrame--Content{
+    width: 50%;
+}
+
+.login__form--title{
+    margin-bottom: 6rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+}
+
+.login__form{
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+.login__form--input{
+    margin: 1.5rem 0;
+}
+
+input{
+    width: 100%;
+    font-size: 16px;
+    background: #F6F8FC;
+    border: none;
+    border-radius: 24px;
+    color: #979797;
+    padding: .8rem;
+}
+
+.login__form--inputText{
+    color: #979797;
+}
+
+.login__form--inputBtn{
+    display: flex;
+    justify-content: center;
+}
+
+.login__form--inputBtnContent{
+    width: 60%;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+    color: #fff;
+    background-color: #20CC81;
+    font-family: 'Poppins', sans-serif;
+}

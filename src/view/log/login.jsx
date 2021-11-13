@@ -15,19 +15,39 @@ export default function Login() {
     }
 
     return (
-        <div>
-            <div>
-                <img src={logImg}/>
+        <div className="login">
+            <div className="login__img">
+                <img className="login__img--img" src={logImg}/>
             </div>
-            <div>
+            <div className="login__formFrame">
+                <div className="login__formFrame--Content">
+                    <p className="login__form--title">Iniciar sesión</p>
 
-                <h1>Iniciar sesión</h1>
+                    <div className="login__form">
 
-                <input name={email} onInput={ e => {set_email(e.target.value)} }/>
-                <input name={pass} onInput={ e => {set_pass(e.target.value)} } type="password"/>
+                        <div className="login__form--input">
+                            <label htmlFor="inputMail">
+                                <span className="login__form--inputText">
+                                    Coreo
+                                </span>
+                            </label><br/>
+                            <input className="inputMail" name={email} onInput={ e => {set_email(e.target.value)} }/>
+                        </div>
 
-                <input type="submit" onClick={log}/>
+                        <div className="login__form--input">
+                            <label htmlFor="inputPass">
+                                <span className="login__form--inputText">
+                                    Contraseña
+                                </span>
+                            </label><br/>
+                            <input className="inputPass" name={pass} onInput={ e => {set_pass(e.target.value)} } type="password"/>
+                        </div>
 
+                        <span className="login__form--inputBtn">
+                            <input className="login__form--inputBtnContent" type="submit" onClick={log}/>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     );
