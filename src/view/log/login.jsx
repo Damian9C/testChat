@@ -1,55 +1,81 @@
-import React, {useState} from "react";
-import "./login.css"
-import logImg from "../../assets/img/log_img.png"
+import React from "react";
+import "./login.css";
+import Image from "../../components/util/image/image";
 
-export default function Login() {
-    const [email, set_email] = useState("");
-    const [pass, set_pass] = useState("");
-
-    const log = () => {
-        if (email && pass){
-            console.log(email, pass)
-        }else{
-            alert('Verifique los cmapos')
+class Login extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            pass: '',
+            screenSize: window.innerWidth,
         }
+
+        this.onFormSubmit = this.onFormSubmit.bind(this)
+        this.updateScreenSize = this.updateScreenSize.bind(this);
     }
 
-    return (
-        <div className="login">
-            <div className="login__img">
-                <img className="login__img--img" src={logImg}/>
-            </div>
-            <div className="login__formFrame">
-                <div className="login__formFrame--Content">
-                    <p className="login__form--title">Iniciar sesión</p>
+    componentDidMount() {
+        window.addEventListener("resize", this.updateScreenSize);
+    }
 
-                    <div className="login__form">
+    setEmail (newEmail) {
+        this.setState({email: newEmail})
+    }
 
-                        <div className="login__form--input">
-                            <label htmlFor="inputMail">
-                                <span className="login__form--inputText">
-                                    Coreo
-                                </span>
-                            </label><br/>
-                            <input className="inputMail" name={email} onInput={ e => {set_email(e.target.value)} }/>
+    setPass (newPass) {
+        this.setState({pass: newPass})
+    }
+
+    updateScreenSize() {
+        this.setState({ screenSize: window.innerWidth });
+    }
+
+    onFormSubmit(event) {
+        event.preventDefault();
+    }
+
+    render () {
+        return (
+            <div className="login">
+                <div className="login__img">
+                    <Image sizeScreen={this.state.screenSize}/>
+                </div>
+                <div className="login__formFrame">
+                    <div className="login__formFrame--Content">
+                        <p className="login__form--title">Iniciar sesión</p>
+
+                        <div className="login__form">
+                            <form onSubmit={this.onFormSubmit}>
+                                <div className="login__form--input">
+                                    <label htmlFor="inputMail">
+                                        <span className="login__form--inputText">
+                                            Coreo electrónico
+                                        </span>
+                                    </label><br/>
+                                    <input className="inputMail" value={this.state.email} onChange={ e => {this.setEmail(e.target.value)} }/>
+                                </div>
+
+                                <div className="login__form--input">
+                                    <label htmlFor="inputPass">
+                                        <span className="login__form--inputText">
+                                            Contraseña
+                                        </span>
+                                    </label><br/>
+                                    <input className="inputPass" value={this.state.pass} onChange={ e => {this.setPass(e.target.value)} } type="password"/>
+                                </div>
+
+                                <span className="login__form--inputBtn">
+                                <input className="login__form--inputBtnContent" type="submit" value="Iniciar sesión"/>
+                            </span>
+                            </form>
                         </div>
-
-                        <div className="login__form--input">
-                            <label htmlFor="inputPass">
-                                <span className="login__form--inputText">
-                                    Contraseña
-                                </span>
-                            </label><br/>
-                            <input className="inputPass" name={pass} onInput={ e => {set_pass(e.target.value)} } type="password"/>
-                        </div>
-
-                        <span className="login__form--inputBtn">
-                            <input className="login__form--inputBtnContent" type="submit" onClick={log}/>
-                        </span>
                     </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
     
 }
+
+export {Login};

@@ -4,6 +4,7 @@
 .login{
     display: grid;
     grid-template-columns: 40% 60%;
+    height: 100vh;
 }
 
 .login__img{
@@ -11,10 +12,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.login__img--img{
-    height: 45%;
 }
 
 .login__formFrame{
@@ -40,6 +37,10 @@
     width: 100%;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
+}
+
+.login__form input, label{
+    font-family: 'Poppins', sans-serif;
 }
 
 .login__form--input{
@@ -72,4 +73,33 @@ input{
     color: #fff;
     background-color: #20CC81;
     font-family: 'Poppins', sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+    .login{
+        grid-template-columns: 100%;
+    }
+
+    .login__img{
+        height: 50%;
+    }
+
+    .login__img--img{
+        margin-top: 6rem;
+        height: 10rem;
+    }
+
+    .login__form--title{
+        margin-top: -2rem;
+        font-size: 22px;
+    }
+
+    .login__formFrame--Content{
+        width: 80%;
+        padding-right: 1rem;
+    }
+
+    .login__form--inputBtnContent{
+        width: 70%;
+    }
 }
