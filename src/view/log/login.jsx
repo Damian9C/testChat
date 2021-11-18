@@ -1,6 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import "./login.css";
 import Image from "../../components/util/image/image";
+import axios from "axios";
+import URL_BASE from "../../util/index"
+import {useHistory} from "react-router-dom";
 
 class Login extends React.Component{
     constructor(props) {
@@ -31,8 +34,23 @@ class Login extends React.Component{
         this.setState({ screenSize: window.innerWidth });
     }
 
-    onFormSubmit(event) {
-        event.preventDefault();
+    async onFormSubmit(event) {
+        try {
+            console.log(this.state)
+            event.preventDefault();
+            let auth = await axios.post((URL_BASE + 'users/login'), {
+                email: this.state.email,
+                password: this.state.pass,
+            })
+            if (auth.status === 200){
+                this.props.history.push({to: '/chats'});
+            } else {
+                alert('Verifica tu correo o contraseña');
+            }
+        }catch (e) {
+            console.log(e)
+            alert('Correo o contraseña invalidos')
+        }
     }
 
     render () {
