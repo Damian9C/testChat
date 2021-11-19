@@ -1,17 +1,12 @@
 import React from "react";
 import "./chat.css";
-import Cookies from "universal-cookie";
+import ChatCmp from "../../components/chat/chatCmp";
 
 class Chat extends React.Component{
-
-
-
     render() {
-        const cookies = new Cookies();
-        console.log(cookies.get('user'))
         return(
             <>
-                Hola {}
+                <ChatCmp/>
             </>
         )
     }

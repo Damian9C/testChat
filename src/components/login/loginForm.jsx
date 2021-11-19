@@ -17,7 +17,9 @@ function LoginForm() {
             let auth = await axios.post((URL_BASE + 'users/login'), {
                 email,
                 password,
-            })
+            }, {
+                timeout: 3000
+            });
             if (auth.status === 200){
                 cookies.set("user", auth.data, {path: '/'})
 

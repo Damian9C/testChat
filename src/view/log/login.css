@@ -74,6 +74,9 @@ input{
     background-color: #20CC81;
     font-family: 'Poppins', sans-serif;
 }
+.login__form--inputBtnContent:hover{
+    cursor: pointer;
+}
 
 @media only screen and (max-width: 768px) {
     .login{
