@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import axios from "axios";
 import URL_BASE from "../../util";
 import {useNavigate} from "react-router-dom";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
 
 function LoginForm() {
     const [email, setEmail] = useState(0);
@@ -16,6 +19,8 @@ function LoginForm() {
                 password,
             })
             if (auth.status === 200){
+                cookies.set("user", auth.data, {path: '/'})
+
                 history('/chats');
             } else {
                 alert('Verifica tu correo o contraseña');
