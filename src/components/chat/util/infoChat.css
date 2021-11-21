@@ -1,0 +1,16 @@
+.InfoChat{
+    font-family: 'Poppins', sans-serif;
+    margin: 1rem 2rem;
+}
+
+.InfoChat__title{
+    color: #9193A6;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: .5rem;
+}
+
+.InfoChat__content{
+    color: #2C2E50;
+    font-size: 14px;
+}

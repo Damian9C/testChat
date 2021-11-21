@@ -2,36 +2,67 @@ import React from "react";
 import './chatUserData.css';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import InfoChat from "../util/infoChat";
+import {ExpandLess} from "@material-ui/icons";
 
-export default function ChatUserData(props) {
-    const [isActive, setIsActive] = React.useState(true);
-    const styleOn = {
-        background: 'red',
-    }
-    const styleOff = {
-        background: 'blue',
+class ChatUserData extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            isActive: false,
+            isOn: {background: 'red'},
+            isOff: {background: 'blue'}
+        }
     }
 
-    return(
-        <div className="chatUserData">
-            <div className="chatUserData__header">
-                <div>
-                    <img src={props.userChat.img}/>
-                </div>
-                <div>{props.userChat.name}</div>
-                <div className="chatUserData__header--lightTxt">{props.userChat.phone}</div>
-            </div>
-            <div className="chatUserData__body ">
-                <button className={isActive? styleOn : styleOff} onClick={() => {
-                    setIsActive(!isActive)
-                }}>
+    setIsActive(){
+        this.setState({
+            isActive: !this.state.isActive
+        })
+    }
+
+    render() {
+        return(
+            <div className="chatUserData">
+                <div className="chatUserData__header">
                     <div>
-                        Datos del Contacto
+                        <img src={this.props.userChat.img}/>
                     </div>
-                    <ExpandMoreIcon/>
-                </button>
+                    <div>{this.props.userChat.name}</div>
+                    <div className="chatUserData__header--lightTxt">{this.props.userChat.phone}</div>
+                </div>
+                {this.state.isActive &&
+                <div className="chatUserData__body">
+                    <button
+                        onClick={() => {
+                            this.setIsActive()
+                        }}
+                    >
+                        <div>
+                            Datos del Contacto
+                        </div>
+                        <ExpandMoreIcon/>
+                    </button>
+                </div>
+                }
+                {!this.state.isActive &&
+                <div className="chatUserData__body--On">
+                    <button
+                        onClick={() => {
+                            this.setIsActive()
+                        }}
+                    >
+                        <div>
+                            Datos del Contacto
+                        </div>
+                        <ExpandLess/>
+                    </button>
+                </div>
+                }
+
+                <InfoChat isVisible={this.state.isActive} dataUser={this.props.userChat}/>
             </div>
-            <InfoChat isVisible={isActive} dataUser={props.userChat}/>
-        </div>
-    )
+        )
+    }
 }
+
+export default ChatUserData;

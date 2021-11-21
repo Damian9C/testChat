@@ -32,15 +32,15 @@
 }
 
 .chatUserData__body button{
+    font-family: 'Poppins', sans-serif;
     width: 100%;
     background: none;
     border: 0;
-    color: inherit;
+    color: #2C2E50;
     /* cursor: default; */
-    font: inherit;
     line-height: normal;
     overflow: visible;
-    padding: 1rem 2rem;
+    padding: .5rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -49,11 +49,22 @@
 .chatUserData__body button:hover{
     cursor: pointer;
 }
-
-.chatUserData__body--true{
-    background-color: red;
+.chatUserData__body--On button:hover{
+    cursor: pointer;
 }
 
-.chatUserData__body--false{
-    background-color: red;
+.chatUserData__body--On button{
+    margin-top: 3rem;
+    width: 100%;
+    background: #F2FAFF;
+    border: 0;
+    color: #2C2E50;
+    /* cursor: default; */
+    font-family: 'Poppins', sans-serif;
+    line-height: normal;
+    overflow: visible;
+    padding: .5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
