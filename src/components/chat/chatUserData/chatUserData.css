@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+.chatUserData img{
+    margin-top: 2rem;
+    height: 7rem;
+    border-radius: 50%;
+}
+
+.chatUserData__header{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+}
+
+.chatUserData__header{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    color: #000000;
+    margin: .2rem 0;
+}
+
+.chatUserData__header--lightTxt{
+    font-weight: 100;
+}
+
+.chatUserData__body{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+.chatUserData__body button{
+    width: 100%;
+    background: none;
+    border: 0;
+    color: inherit;
+    /* cursor: default; */
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatUserData__body button:hover{
+    cursor: pointer;
+}
+
+.chatUserData__body--true{
+    background-color: red;
+}
+
+.chatUserData__body--false{
+    background-color: red;
+}
