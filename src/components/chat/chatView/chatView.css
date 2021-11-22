@@ -1,5 +1,54 @@
 .chat__principal{
-    height: 100vh;
-    overflow-y: scroll;
     background: #F3F4F8;
+}
+
+.chat__principalMessages{
+    box-shadow: inset 5px 5px 9px 0px rgba(0,0,0,0.1);
+    height: 82vh;
+    overflow-y: scroll;
+}
+
+.chat__principalSend hr{
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+}
+
+.chat__principalSend--content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat__principalSend--Input{
+    z-index: 2;
+    background: #FFFFFF;
+    width: 80%;
+    padding: 13px 0 13px 33px;
+    margin-left: 20px;
+
+    border: 1.06px solid rgba(0, 0, 0, 0.1);
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+}
+
+.chat__principalSend--Input::placeholder{
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+
+.chat__principal--userChat{
+    z-index: 1;
+}
+
+.chat__principalSend--btn{
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.chat__principalSend--btn:hover{
+    cursor: pointer;
 }

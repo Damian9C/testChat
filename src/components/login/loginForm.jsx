@@ -7,8 +7,8 @@ import Cookies from "universal-cookie";
 const cookies = new Cookies();
 
 function LoginForm() {
-    const [email, setEmail] = useState(0);
-    const [password, setPass] = useState(0);
+    const [email, setEmail] = useState('');
+    const [password, setPass] = useState('');
 
     const history = useNavigate();
 
@@ -44,7 +44,7 @@ function LoginForm() {
                             Coreo electrónico
                         </span>
                     </label><br/>
-                    <input className="inputMail" value={email} onChange={ e => {setEmail(e.target.value)} }/>
+                    <input className="inputMail" placeholder="Ingresa tu correo" value={email} onChange={ e => {setEmail(e.target.value)} }/>
                 </div>
 
                 <div className="login__form--input">
@@ -53,7 +53,7 @@ function LoginForm() {
                             Contraseña
                         </span>
                     </label><br/>
-                    <input className="inputPass" value={password} onChange={ e => {setPass(e.target.value)} } type="password"/>
+                    <input className="inputPass" placeholder="Ingresa tu contraseña" value={password} onChange={ e => {setPass(e.target.value)} } type="password"/>
                 </div>
 
                 <span className="login__form--inputBtn">

@@ -2,7 +2,6 @@ import React from "react";
 import "./withUserChat.css";
 
 export default function WithUserChat(props) {
-    console.log(props)
     return(
         <div className="withUserChat">
             <div>

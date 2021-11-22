@@ -6,6 +6,7 @@ import URL_BASE from "../../../util";
 import ChatUserData from "../chatUserData/chatUserData";
 import ActualUserChat from "../mainChat/actualUserChat/actualUserChat";
 import WithUserChat from "../mainChat/withUserChat/withUserChat";
+import imgSend from "../../../assets/img/send.png";
 
 class ChatView extends React.Component{
     constructor(props) {
@@ -14,6 +15,7 @@ class ChatView extends React.Component{
             chats: [],
             userChat: {},
             conversation: [],
+            newMessage: '',
         }
     }
 
@@ -46,6 +48,12 @@ class ChatView extends React.Component{
         })
     }
 
+    setNewMessage(newData){
+        this.setState({
+            newMessage: newData
+        })
+    }
+
     setChats(newData){
         this.setState({
             chats: newData,
@@ -53,40 +61,78 @@ class ChatView extends React.Component{
         })
     }
 
+    setConversation(newData){
+        this.setState({
+            conversation: newData,
+        })
+    }
+
+    sendNewMessage(state, props){
+        let finalMessage = state.chats.conversation.length - 1;
+        let finalUser = state.chats.conversation[finalMessage].user;
+
+        if(finalUser === props._id){
+            state.chats.conversation[finalMessage].message.push(state.newMessage);
+            this.setConversation(state.conversation);
+        }else{
+            state.chats.conversation.push({
+                user: props._id,
+                message: [
+                    state.newMessage,
+                ],
+            })
+        }
+        this.setConversation(state.conversation);
+    }
+
     render() {
-        console.log(this.state.conversation)
         return(
             <>
-                <div className="chat__principal">
-                    <div className="chat__principalBar">
-                        <DataBar userChat={this.state.userChat}/>
-                    </div>
-                    <br/>
-                    <br/>
-                    <br/>
-
+                <div  className="chat__principal">
+                    <DataBar userChat={this.state.userChat}/>
                     <div className="chat__principalMessages">
-                        <br/>
-                        {this.state.conversation.map(item => {
-                            if (this.props.datauser._id === item.user){
-                                return(
-                                    <div>
-                                        <ActualUserChat userData={this.props.datauser} item={item}/>
-                                    </div>
-                                )
-                            }else{
-                                return (
-                                    <div>
-                                        <WithUserChat userData={this.state.userChat} item={item}/>
-                                    </div>
-                                )
+
+                        <div>
+                            {this.state.conversation.map(item => {
+                                if (this.props.datauser._id === item.user){
+                                    return(
+                                        <div>
+                                            <ActualUserChat userData={this.props.datauser} item={item}/>
+                                        </div>
+                                    )
+                                }else{
+                                    return (
+                                        <div>
+                                            <WithUserChat userData={this.state.userChat} item={item}/>
+                                        </div>
+                                    )
+                                }
+                            })
                             }
-                        })
-                        }
+                            <br/>
+                        </div>
+                    </div>
+                    <div className="chat__principalSend">
+                        <hr/>
+                        <div className="chat__principalSend--content">
+                            <input
+                                placeholder="Escribe un mensaje..."
+                                className="chat__principalSend--Input"
+                                value={this.state.newMessage}
+                                onChange={ e => {this.setNewMessage(e.target.value)} }
+                            />
+                            <img
+                                onClick={() => {
+                                    this.sendNewMessage(this.state, this.props.datauser)
+                                }}
+                                className="chat__principalSend--btn"
+                                src={imgSend}
+                            />
+                        </div>
                     </div>
                 </div>
 
-                <div>
+                <div className="chat__principal--userChat">
                     <ChatUserData userChat={this.state.userChat}/>
                 </div>
             </>

@@ -2,7 +2,6 @@ import React from "react";
 import './actualUserChat.css';
 
 export default function ActualUserChat(props) {
-    console.log(props)
     return(
         <div className="actualUserChat">
             <div>
