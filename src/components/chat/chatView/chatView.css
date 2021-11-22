@@ -1,0 +1,5 @@
+.chat__principal{
+    height: 100vh;
+    overflow-y: scroll;
+    background: #F3F4F8;
+}

@@ -1,15 +1,19 @@
 import React from "react";
+import "./chatView.css";
 import DataBar from "../../util/dataBar/dataBar";
 import axios from "axios";
 import URL_BASE from "../../../util";
 import ChatUserData from "../chatUserData/chatUserData";
+import ActualUserChat from "../mainChat/actualUserChat/actualUserChat";
+import WithUserChat from "../mainChat/withUserChat/withUserChat";
 
 class ChatView extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
             chats: [],
-            userChat: {}
+            userChat: {},
+            conversation: [],
         }
     }
 
@@ -44,20 +48,41 @@ class ChatView extends React.Component{
 
     setChats(newData){
         this.setState({
-            chats: newData
+            chats: newData,
+            conversation: newData.conversation,
         })
     }
 
     render() {
+        console.log(this.state.conversation)
         return(
             <>
                 <div className="chat__principal">
                     <div className="chat__principalBar">
                         <DataBar userChat={this.state.userChat}/>
                     </div>
+                    <br/>
+                    <br/>
+                    <br/>
 
                     <div className="chat__principalMessages">
-
+                        <br/>
+                        {this.state.conversation.map(item => {
+                            if (this.props.datauser._id === item.user){
+                                return(
+                                    <div>
+                                        <ActualUserChat userData={this.props.datauser} item={item}/>
+                                    </div>
+                                )
+                            }else{
+                                return (
+                                    <div>
+                                        <WithUserChat userData={this.state.userChat} item={item}/>
+                                    </div>
+                                )
+                            }
+                        })
+                        }
                     </div>
                 </div>
 

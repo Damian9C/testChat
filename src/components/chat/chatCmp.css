@@ -14,6 +14,8 @@
 }
 
 .chat__userdata--data{
+    color: #2C2E50;
+    font-size: 16px;
     display: grid;
     align-items: center;
     justify-content: center;
@@ -21,11 +23,15 @@
 }
 
 .chat__userdata--dataTitle{
+    color: #2C2E50;
+    font-size: 18px;
     font-family: 'Poppins', sans-serif;
     font-weight: bold;
 }
 
 .chat__userdata--chat{
+    color: #2C2E50;
+    font-size: 16px;
     padding: 2rem 0 2rem 2.5rem;
     background: rgba(0, 153, 255, 0.05);
 

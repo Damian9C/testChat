@@ -1,5 +1,6 @@
 .dataBar{
     display: flex;
+    height: 7.5vh;
 }
 
 p{
