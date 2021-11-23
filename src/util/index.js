@@ -1,3 +1,3 @@
-const URL_BASE = 'http://localhost:4000/api/'
+const URL_BASE = 'https://chat-damian.herokuapp.com/api/'
 
 export default URL_BASE;
