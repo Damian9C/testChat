@@ -4,19 +4,20 @@ import {useNavigate} from "react-router-dom";
 import './chatCmp.css';
 import ballonChat from '../../assets/img/ballon.png'
 import ChatView from "./chatView/chatView";
+import {Login} from "../../view/log/login";
 
 
-function ChatCmp() {
+function ChatCmp(context) {
     const history = useNavigate();
     const cookies = new Cookies();
     let dataUser = cookies.get('user');
-    let chats;
-    let userChat;
-    let userChatName = ''
 
     if (dataUser === undefined) {
-        history('/');
-        console.log('Hola')
+        return (
+            <>
+                <Login/>
+            </>
+        )
     } else {
         return (
             <div className="chatMain">

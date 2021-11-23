@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./chatView.css";
 import DataBar from "../../util/dataBar/dataBar";
 import axios from "axios";
@@ -27,7 +27,7 @@ class ChatView extends React.Component{
                  });
                  this.setChats(request.data[0]);
             } catch (e) {
-                alert('Error al cargar mensajes')
+                console.log(e)
             }
         }
         getDataChat().then(() => {
@@ -40,7 +40,19 @@ class ChatView extends React.Component{
                 }
             })
         })
+
+        setInterval(this.axiosFunc, 1000)
     }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
+    axiosFunc = () => {
+        axios.get(URL_BASE + 'messages').then(request => {
+            this.setConversation(request.data[0].conversation);
+        })
+    };
 
     setUserChats(newData){
         this.setState({
@@ -67,22 +79,18 @@ class ChatView extends React.Component{
         })
     }
 
-    sendNewMessage(state, props){
-        let finalMessage = state.chats.conversation.length - 1;
-        let finalUser = state.chats.conversation[finalMessage].user;
+    async sendNewMessage(state, props) {
+        try {
 
-        if(finalUser === props._id){
-            state.chats.conversation[finalMessage].message.push(state.newMessage);
-            this.setConversation(state.conversation);
-        }else{
-            state.chats.conversation.push({
+            await axios.put(URL_BASE + 'messages/' + state.chats._id, {
                 user: props._id,
-                message: [
-                    state.newMessage,
-                ],
+                message: state.newMessage,
             })
+
+            this.setNewMessage('');
+        } catch (e) {
+            console.log(e)
         }
-        this.setConversation(state.conversation);
     }
 
     render() {

@@ -8,17 +8,11 @@ export default function WithUserChat(props) {
                 <img src={props.userData.img}/>
             </div>
             <div>
-                {
-                    props.item.message.map(item => {
-                        return(
-                            <div className="withUserChat__content">
-                                <p>
-                                    {item}
-                                </p>
-                            </div>
-                        )
-                    })
-                }
+                <div className="withUserChat__content">
+                    <p>
+                        {props.item.message}
+                    </p>
+                </div>
             </div>
         </div>
     )
